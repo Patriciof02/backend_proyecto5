@@ -6,7 +6,7 @@ const User = mongoose.model('User')
 
 
 const signup = async (req, res) => {
-    const {username, mail, pass} = req.body
+    const {username, mail, pass, phone, adress, admin} = req.body
     const mailLowerCase = mail.toLowerCase()
     const regexPassword = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/
     if(!regexPassword.test(pass)){
@@ -20,7 +20,10 @@ const signup = async (req, res) => {
         const user = new User({
             username,
            mail:  mailLowerCase,
-           pass: hashedPassword
+           pass: hashedPassword,
+           phone,
+           adress,
+           admin
 
         })
         const resp = await user.save()
@@ -176,7 +179,7 @@ const getUserById = async (req, res) =>{
         })}
 
         catch (error){
-            return re.status(500).json({
+            return res.status(500).json({
                 message:'server error'
             })
         

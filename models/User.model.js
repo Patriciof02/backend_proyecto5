@@ -34,15 +34,12 @@ const UserSchema = new mongoose.Schema({
         type: String,
         require: false,
     },
-    premium:{
+    admin:{
         type: Boolean,
         require:false,
         default:false
     },
-    dob:{
-        type: String,
-        require:false
-    },
+  
 
 },{
     timestamps:true
