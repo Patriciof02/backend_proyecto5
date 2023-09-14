@@ -4,11 +4,7 @@ const ProductSchema = new mongoose.Schema({
     productname:{
         type: String,
         require: true,
-        validate: {
-            validator: function(v){
-                return /^[a-zA-Z0-9 ]{3,30}$/.test(v)
-            }
-        }
+       
     },
     description:{
         type:String,
